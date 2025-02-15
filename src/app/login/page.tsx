@@ -1,39 +1,105 @@
+"use client";
+import Image from "next/image";
+import { useState } from "react";
+
 export default function LoginPage() {
-    return (
-      <div className="flex min-h-screen items-center justify-center bg-gray-100">
-        <div className="w-full max-w-md p-8 space-y-6 bg-white rounded-2xl shadow-lg">
-          <h2 className="text-3xl font-bold text-center text-blue-600">Welcome Back</h2>
-          <form className="space-y-4">
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    console.log("Logging in with:", { email, password });
+  };
+
+  return (
+    
+    <section className="bg-gray-200 min-h-screen flex items-center justify-center">
+      <div className="bg-gray-100 p-5 flex rounded-2xl shadow-lg max-w-3xl w-full">
+        {/* Login Form Section */}
+        <div className="md:w-1/2 px-5">
+          <h2 className="text-2xl font-bold text-[#002D74]">Login</h2>
+          <p className="text-sm mt-4 text-[#002D74]">
+            If you have an account, please login
+          </p>
+
+          <form className="mt-6" onSubmit={handleSubmit}>
             <div>
-              <label className="block text-sm font-medium text-gray-700">Email</label>
-              <input 
-                type="email" 
-                required 
-                className="w-full p-3 mt-1 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                placeholder="Enter your email"
+              <label className="block text-gray-700">Email Address</label>
+              <input
+                type="email"
+                placeholder="Enter Email Address"
+                className="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none"
+                required
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
               />
             </div>
-            <div>
-              <label className="block text-sm font-medium text-gray-700">Password</label>
-              <input 
-                type="password" 
-                required 
-                className="w-full p-3 mt-1 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                placeholder="Enter your password"
+
+            <div className="mt-4">
+              <label className="block text-gray-700">Password</label>
+              <input
+                type="password"
+                placeholder="Enter Password"
+                className="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none"
+                required
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
               />
             </div>
-            <button 
-              type="submit" 
-              className="w-full p-3 font-semibold text-white bg-blue-600 rounded-lg hover:bg-blue-700"
+
+            <div className="text-right mt-2">
+              <a
+                href="#"
+                className="text-sm font-semibold text-gray-700 hover:text-blue-700"
+              >
+                Forgot Password?
+              </a>
+            </div>
+
+            <button
+              type="submit"
+              className="w-full bg-blue-500 hover:bg-blue-400 text-white font-semibold rounded-lg px-4 py-3 mt-6"
             >
-              Sign In
+              Log In
             </button>
           </form>
-          <p className="text-center text-gray-600">
-            Don't have an account? <a href="#" className="text-blue-600 hover:underline">Sign up</a>
-          </p>
+
+          <div className="mt-7 grid grid-cols-3 items-center text-gray-500">
+            <hr className="border-gray-500" />
+            <p className="text-center text-sm">OR</p>
+            <hr className="border-gray-500" />
+          </div>
+
+          {/* Google Login Button */}
+          <button className="bg-white border py-2 w-full rounded-xl mt-5 flex justify-center items-center text-sm hover:scale-105 duration-300">
+            <Image
+              src="/goog.png"
+              alt="Google Logo"
+              width={20}
+              height={20}
+            />
+            <span className="ml-4">Login with Google</span>
+          </button>
+
+          <div className="text-sm flex justify-between items-center mt-3">
+            <p>If you don't have an account...</p>
+            <button className="py-2 px-5 ml-3 bg-white border rounded-xl hover:scale-110 duration-300 border-blue-400">
+              Register
+            </button>
+          </div>
+        </div>
+
+        {/* Right Side Image */}
+        <div className="w-1/2 md:block hidden">
+          <Image
+            src="/jandt.jpg"
+            alt="Login Image"
+            width={600}
+            height={600}
+            className="rounded-2xl"
+          />
         </div>
       </div>
-    );
-  }
-  
+    </section>
+  );
+}
