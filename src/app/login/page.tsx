@@ -12,7 +12,6 @@ export default function LoginPage() {
   };
 
   return (
-    
     <section className="bg-gray-200 min-h-screen flex items-center justify-center">
       <div className="bg-gray-100 p-5 flex rounded-2xl shadow-lg max-w-3xl w-full">
         {/* Login Form Section */}
@@ -28,7 +27,7 @@ export default function LoginPage() {
               <input
                 type="email"
                 placeholder="Enter Email Address"
-                className="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none"
+                className="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none text-black"
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
@@ -40,7 +39,7 @@ export default function LoginPage() {
               <input
                 type="password"
                 placeholder="Enter Password"
-                className="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none"
+                className="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none text-black"
                 required
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
@@ -70,35 +69,24 @@ export default function LoginPage() {
             <hr className="border-gray-500" />
           </div>
 
-          {/* Google Login Button */}
-          <button className="bg-white border py-2 w-full rounded-xl mt-5 flex justify-center items-center text-sm hover:scale-105 duration-300">
-            <Image
-              src="/goog.png"
-              alt="Google Logo"
-              width={20}
-              height={20}
-            />
-            <span className="ml-4">Login with Google</span>
+          {/* Register Button in place of Google Login */}
+          <button className="bg-white border py-2 w-full rounded-xl mt-5 flex justify-center items-center text-sm hover:scale-105 duration-300 text-black">
+            Register
           </button>
-
-          <div className="text-sm flex justify-between items-center mt-3">
-            <p>If you don't have an account...</p>
-            <button className="py-2 px-5 ml-3 bg-white border rounded-xl hover:scale-110 duration-300 border-blue-400">
-              Register
-            </button>
-          </div>
         </div>
 
         {/* Right Side Image */}
-        <div className="w-1/2 md:block hidden">
-          <Image
-            src="/jandt.jpg"
-            alt="Login Image"
-            width={600}
-            height={600}
-            className="rounded-2xl"
-          />
-        </div>
+        {/* Right Side Image */}
+<div className="w-1/2 md:flex hidden items-center justify-center">
+  <Image
+    src="/jandt.jpg"
+    alt="Login Image"
+    width={600}
+    height={600}
+    className="rounded-2xl self-center"
+  />
+</div>
+
       </div>
     </section>
   );
